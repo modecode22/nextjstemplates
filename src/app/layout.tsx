@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import "@/styles/globals.css";
+import { GeistMono } from "geist/font/mono";
+import { cn } from "@/lib/utils";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          "bg-dark-900 selection:bg-primary-500/50 selection:text-light-500 text-light-500",
+          GeistMono.className
+        )}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
